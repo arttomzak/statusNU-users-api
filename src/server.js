@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { Pool } = require("pg");
+const { Pool } = require("pg"); // importing this prevented me from starting the server
 require("dotenv").config();
 
 const app = express();
@@ -19,7 +19,7 @@ const pool = new Pool({
 //     res.json(result);
 //   }); working but just spits out a string
 
-app.get("/api/users", async (req, res) => {
+app.get("/users", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM users");
     res.json(result.rows);
